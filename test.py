@@ -2,29 +2,25 @@
 import os
 import sys
 from re import search
+def funckeycheck(key, componentline):
+    component = componentline.split('-')[0]
+    stack = componentline.split('-')[2].split(':')[0]
+    status = componentline.split(':')[2]
+    print("component : {} \nstack : {} \nstatus : {}".format(component,stack,status))
+    if search("yes", status):
+        print("since the status is yes, execute {} stack {}".format(component,stack))
+        print("invoke {}.sh".format(key))
+        print('\n')
+        print('\n')
+    else:
+        print("since the status is no, ingnoring {} stack {}".format(component,stack))
+        print('\n')
+        print('\n')
 def funcsub(componentline):
     if search("3dspace", componentline):
-        component = componentline.split('-')[0]
-        stack = componentline.split('-')[2].split(':')[0]
-        status = componentline.split(':')[2]
-        print("component : {} \nstack : {} \nstatus : {}".format(component,stack,status))
-        if search("yes", status):
-            print("since the status is yes, execute {} stack {}".format(component,stack))
-        else:
-            print("since the status is no, ingnoring {} stack {}".format(component,stack))
-            print('\n')
-            print('\n')
+        funckeycheck("3dspace",componentline)
     elif search("internal", componentline):
-        component = componentline.split('-')[0]
-        stack = componentline.split('-')[2].split(':')[0]
-        status = componentline.split(':')[2]
-        print("component : {} \nstack : {} \nstatus : {}".format(component,stack,status))
-        if search("yes", status):
-            print("since the status is yes, execute {} stack {}".format(component,stack))
-        else:
-            print("since the status is no, ingnoring {} stack {}".format(component,stack))
-            print('\n')
-            print('\n')
+        funckeycheck("internal",componentline)
     else:
         print("invalid input")
 

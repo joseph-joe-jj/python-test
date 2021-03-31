@@ -14,6 +14,19 @@ def funcsub(componentline):
             print("since the status is no, ingnoring {} stack {}".format(component,stack))
             print('\n')
             print('\n')
+    elif search("internal", componentline):
+        component = componentline.split('-')[0]
+        stack = componentline.split('-')[2].split(':')[0]
+        status = componentline.split(':')[2]
+        print("component : {} \nstack : {} \nstatus : {}".format(component,stack,status))
+        if search("yes", status):
+            print("since the status is yes, execute {} stack {}".format(component,stack))
+        else:
+            print("since the status is no, ingnoring {} stack {}".format(component,stack))
+            print('\n')
+            print('\n')
+    else:
+        print("invalid input")
 
 def my_func(name):
     # subName = "hcplmappd"+"[1-2]+"+"l"

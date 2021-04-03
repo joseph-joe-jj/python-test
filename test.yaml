@@ -1,0 +1,43 @@
+#  Stack-1 = hcplmappd2l || Stack-2 = hcplmappd1l
+3dspace:
+  Stack-1: False
+  Stack-2: True
+  Stack-3: True
+  Stack-4: False
+
+#  Stack-1 = hcplmappd2l || Stack-2 = hcplmappd1l
+internal:
+  Stack-1: True
+  Stack-2: False
+  Stack-3: True
+  Stack-4: False
+
+#  Stack-1 = hcplmappd2l || Stack-2 = hcplmappd1l
+external:
+  Stack-1: True
+  Stack-2: False
+  Stack-3: True
+  Stack-4: False
+
+#  Stack-1 = hcplmappd2l || Stack-2 = hcplmappd1l
+internal1:
+  Stack-1: True
+  Stack-2: False
+  Stack-3: True
+  Stack-4: False
+
+#  Stack-1 = hcplmappd2l || Stack-2 = hcplmappd1l
+external3:
+  Stack-1: True
+  Stack-2: False
+  Stack-3: True
+  Stack-4: False
+
+
+
+
+
+
+
+
+

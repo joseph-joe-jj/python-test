@@ -27,11 +27,10 @@ class ExecutionLines:
         print("          ----> using line {}".format(self.line))
 
 
-
 def log_init(context):
     log = logging.getLogger("main")
+    log.setLevel(logging.DEBUG)
     log_stdout = logging.StreamHandler()
-    log_stdout.setLevel(logging.DEBUG)
     log_format = logging.Formatter(
         '%(asctime)s - %(name)s - %(levelname)s - %(message)s - %(lineno)d '
     )
@@ -52,7 +51,7 @@ def load_lines(yaml_data):
 def load_yaml(file, logger):
     try:
         with open(file, 'r') as stream:
-            logger.warning("File {} loaded successfully".format(file))
+            logger.info("File {} loaded successfully".format(file))
             data_objects = yaml.full_load(stream)
             return data_objects
 
@@ -67,13 +66,13 @@ def main():
     try:
         logger = log_init("main")
 
-        logger.warning("trying to load file {} ".format(config_file))
+        logger.info("trying to load file {} ".format(config_file))
         conf_objects = load_yaml(file=config_file, logger=logger)
 
-        logger.warning("parsing execution lines")
+        logger.info("parsing execution lines")
         load_lines(conf_objects)
 
-        logger.warning("listing the status of lines:")
+        logger.info("listing the status of lines:")
         for k in list_line:
             if k.status:
                 k.execute()

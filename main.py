@@ -1,9 +1,9 @@
 import yaml
 import logging
+from pprint import pprint
 
 config_file = 'test.yaml'
-lineList = []
-
+mapItem = {}
 
 def log_init(context):
     log = logging.getLogger("main")
@@ -18,18 +18,23 @@ def log_init(context):
 
 
 def get_context(data_loaded):
-    for k, v in data_loaded.items():
+    cnt = 1
+    for index, (k, v) in enumerate(data_loaded.items()):
         for ele in v:
             if v[ele]:
                 active_line = ele.split('-')[1]
                 active_stack = k
-                lineList.append({active_line:active_stack})
+                mapItem[index] = {active_line: active_stack}
+                cnt = cnt + 1
+
+
                 # print("item {} line is {}, stack is {}".format(cnt,active_line, active_stack))
 
 
 def display(lines):
     for k, v in lines.items():
-        print(k, "===>", v)
+        print(k, v)
+
 
 
 try:
@@ -39,7 +44,8 @@ try:
         data_loaded = yaml.full_load(stream)
         logger.warning("Function executed")
         get_context(data_loaded)
-        print(lineList)
+        display(mapItem)
+
 
 except yaml.YAMLError as err:
     logger.warning("Error occurred {}".format(err))
